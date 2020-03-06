@@ -22,3 +22,8 @@ jobs:
           git add .
           git commit -m 'Recording action run #${{ github.run_id }}'
           git push origin master
+        env:
+          GIT_AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
+          GIT_AUTHOR_NAME: ${{ github.actor }}
+          GIT_COMMITTER_EMAIL: ${{ github.actor }}@users.noreply.github.com
+          GIT_COMMITTER_NAME: ${{ github.actor }}
