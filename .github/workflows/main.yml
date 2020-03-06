@@ -12,3 +12,8 @@ jobs:
     steps:
       - name: Dump Context
         run: echo '${{ toJSON( github ) }}'
+      - name: Checkout Wiki
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.repository }}.wiki
+      - run: ls -alh
