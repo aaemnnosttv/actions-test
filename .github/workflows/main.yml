@@ -1,5 +1,8 @@
 name: CI
 
+.job_template: &job_definition  # Hidden key that defines an anchor named 'job_definition'
+  run: echo '${{ toJSON( job ) }}'
+
 on:
   push:
     branches: master
@@ -15,6 +18,16 @@ jobs:
         run: echo '${{ toJSON( github ) }}'
       - name: Dump ENV
         run: set
+      - test1:
+        <<: *job_definition           # Merge the contents of the 'job_definition' alias
+        name: Test Job 1
+        env:
+          foo: bar
+      - test2:
+        <<: *job_definition           # Merge the contents of the 'job_definition' alias
+        name: Test Job 2
+        env:
+          foo: baz
       - name: Checkout Wiki
         uses: actions/checkout@v2
         with:
