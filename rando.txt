@@ -1,3 +1,3 @@
 This file is just for generating commits.
 
-via push
+via pull request
